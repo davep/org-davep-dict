@@ -464,7 +464,7 @@ DICT-CLIENT is returned."
 (defmethod connect ((dict-client dict-client))
   "Connect the dictionary client to the dictionary server."
   ;; Open the connection to the server.
-  (setf (socket dict-client) (make-socket :remote-host (host dict-client) :remote-port (port dict-client) :format :text))
+  (setf (socket dict-client) (ccl:make-socket :remote-host (host dict-client) :remote-port (port dict-client) :format :text))
   ;; Read back the banner.
   (setf (banner dict-client) (read-response (make-instance 'dict-client-response) (get-line dict-client)))
   ;; Did the banner indicate any sort of error?

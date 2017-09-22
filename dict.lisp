@@ -50,7 +50,7 @@ way then you should modify the value of this variable.")
 ;; Global constants
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  
+
   (unless (boundp '+first-db+)
     (defconstant +first-db+ "!"
       "Database name to use when the first definition/match is required."))
@@ -88,7 +88,7 @@ way then you should modify the value of this variable.")
   (let ((*readtable* (copy-readtable nil)))
     (setf (readtable-case *readtable*) :preserve)
     (read-string-as-list string)))
-  
+
 (defun end-of-data-p (line)
   "Is LINE an end of data marker?"
   (string= line "."))
@@ -104,7 +104,7 @@ way then you should modify the value of this variable.")
         (:prefix  +prefix-match-strategy+)
         (otherwise (symbol-name keyword)))
     keyword))
-        
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Dict response class.
 
@@ -202,7 +202,7 @@ INFO is returned."
     (setf (name info)        (symbol-name (first info-items))
           (description info) (second info-items)))
   info)
-     
+
 (defmethod print-object ((info dict-general-info) (stream stream))
   "Format the INFO for easy reading when output to STREAM."
   (print-unreadable-object (info stream :type t)
@@ -251,7 +251,7 @@ SEE-ALSO - Get a list of links found in the defintion."))
 DEFINITION is returned."
   (let ((info (with-safe-reading (read-string-as-list-preserving-case (response header)))))
     (setf (word definition)     (first info)
-          (database definition) (symbol-name (second info)) 
+          (database definition) (symbol-name (second info))
           (name     definition) (third info)))
   definition)
 
@@ -261,7 +261,7 @@ DEFINITION is returned."
                                            for start = (when strip-leading-whitespace (position #\Space (the string line) :test #'char/=))
                                            if start collect (subseq line (max 0 (1- start)))
                                            else collect line))))
-         
+
 (defmethod see-also ((definition dict-word-definition))
   "Get a list of \"see also\" items for the definition."
   ;; Get the defintion as one long string and reduce any multiple highlight
@@ -441,7 +441,7 @@ MAKE-DICT-CLIENT - Create a dictionary client object."))
           (delete-if (lambda (cap)
                        (string= cap ""))
                      (split-sequence #\. cap-string))))
-  
+
 (defmethod populate-slots-from-banner ((dict-client dict-client))
   "Populate various slots from the banner.
 
@@ -536,7 +536,7 @@ An object of the class `DICT-CLIENT-RESPONSE' is returned."
 
 An object of the class `DICT-CLIENT-RESPONSE' is returned."
   (long-command dict-client "show server"))
-  
+
 (defmethod server-help ((dict-client dict-client))
   "Request help from the dictionary server.
 

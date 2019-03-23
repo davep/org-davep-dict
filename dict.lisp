@@ -17,10 +17,10 @@
 ;;
 ;; You can always find the latest version of this code at:
 ;;
-;;   <URL:http://www.davep.org/lisp/#org-davep-dict>
+;;   <URL:https://github.com/davep/org-davep-dict>
 ;;
-;; See <URL:http://www.davep.org/lisp/#org-davep-dictrepl> as a quick
-;; example of how this code might be used.
+;; See <URL:https://github.com/davep/org-davep-dictrepl> as a quick example
+;; of how this code might be used.
 
 ;;; TODO:
 ;;
